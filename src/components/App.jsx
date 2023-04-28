@@ -8,8 +8,6 @@ import { fetchGalery } from "services/api";
 import { ImageGalery } from "./ImageGallery/ImageGallery";
 import { Button } from "./Button/Button";
 
-// 1. Необхідно відредагувати стилі
-// 2. Наступний крок кнопка "загрузити більше"
 export class App extends Component {
   state = {
     photos: null,
@@ -48,20 +46,8 @@ export class App extends Component {
   };
 
   loadsMore = () => {
-    // try {
     this.setState(prevState => ({page: prevState.page + 1}));
-      console.log(`Записав номер сторінки! page =${this.state.page}`)
-    //   const response = await fetchGalery(query, page);
-    //   console.log(response)
-    //   let newPhotos = response.data.hits;
-    //   console.log(newPhotos)
-    //   this.setState(pervState => {
-    //     // console.log(pervState)
-    //     this.state.photos = [...pervState.photos, ...newPhotos];
-    //   });
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    console.log(`Записав номер сторінки! page =${this.state.page}`)
 };
 
   render() {
