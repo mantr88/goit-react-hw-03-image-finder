@@ -1,9 +1,13 @@
 import { ImageGalleryItem } from "components/ImageGalleryItem/ImageGalleryItem";
+import { List } from "./ImageGallery.styled";
 
 export const ImageGalery = ({items}) => {
     return (
-        <ul>
-            {items.map(item => (<ImageGalleryItem key={item.id} item={item} />))};
-        </ul>
+        <List>
+            {items.map(item => (
+                <li key={item.id}>
+                    <ImageGalleryItem item={item} />
+                </li>))}
+        </List>
     );
 };

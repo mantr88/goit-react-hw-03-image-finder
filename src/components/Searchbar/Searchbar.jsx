@@ -1,5 +1,6 @@
 import { Formik } from "formik";
 import { Header, Form, Field, FormButton } from "./Searchbar.styled";
+import {BiSearch} from 'react-icons/bi'
 
 export const Searchbar = ({ query }) => {
     return (
@@ -18,7 +19,7 @@ export const Searchbar = ({ query }) => {
             >
                 <Form>
                     <FormButton type="submit" className="button">
-                    <span className="button-label">Search</span>
+                        <BiSearch />
                     </FormButton>
 
                     <Field
