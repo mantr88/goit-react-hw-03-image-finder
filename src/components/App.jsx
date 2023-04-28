@@ -49,9 +49,8 @@ export class App extends Component {
 
   loadsMore = () => {
     // try {
-      const { query, page } = this.state;
     this.setState(prevState => ({page: prevState.page + 1}));
-      console.log(`Записав номер сторінки! page =${page}`)
+      console.log(`Записав номер сторінки! page =${this.state.page}`)
     //   const response = await fetchGalery(query, page);
     //   console.log(response)
     //   let newPhotos = response.data.hits;
