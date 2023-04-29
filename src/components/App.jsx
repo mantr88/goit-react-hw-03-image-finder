@@ -1,23 +1,26 @@
+import { ThemeProvider } from "styled-components";
+import { Component } from "react";
 import { Layout } from "./Layout/Layout";
 import { GlobalStyle } from "./Utils/GlobalStyle";
-import { ThemeProvider } from "styled-components";
 import { theme } from "./Utils/Theme";
-import { Component } from "react";
 import { Searchbar } from "./Searchbar/Searchbar";
 import { fetchGalery } from "services/api";
 import { ImageGalery } from "./ImageGallery/ImageGallery";
 import { Button } from "./Button/Button";
+import { Spiner } from "./Spiner/Spiner";
 
 export class App extends Component {
   state = {
     photos: null,
     query: '',
     page: 1,
+    isLoading: false,
   };
 
   async componentDidUpdate(_, prevState) {
   if (prevState.page !== this.state.page) {
     try {
+       this.setState({ isLoading: true });
       const { query, page } = this.state;
       const response = await fetchGalery(query, page);
       console.log(response)
@@ -29,6 +32,8 @@ export class App extends Component {
       });
     } catch (error) {
       console.log(error);
+    } finally {
+      this.setState({ isLoading: false });
     }
   }
     
@@ -36,12 +41,14 @@ export class App extends Component {
 
   searchByrequest = async query => {
     try {
-
+      this.setState({ isLoading: true });
       const response = await fetchGalery(query);
       // console.log(response)
       this.setState({photos: response.data.hits, query: query});
     } catch (error) {
       console.log(error);
+    } finally {
+      this.setState({ isLoading: false });
     }
   };
 
@@ -51,12 +58,13 @@ export class App extends Component {
 };
 
   render() {
-    const { photos } = this.state;
+    const { photos, isLoading } = this.state;
     return (
     <ThemeProvider theme={theme}>
       <Layout>
       <GlobalStyle />
           <Searchbar query={this.searchByrequest} />
+          <Spiner visible={isLoading} />
           {photos && <ImageGalery items={photos} />}
           {photos && <Button loadsMore={this.loadsMore} />}
       </Layout>
