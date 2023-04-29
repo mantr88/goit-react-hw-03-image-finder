@@ -1,5 +1,5 @@
 import Modal from 'react-modal';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Image } from './Modal.styled';
 
 const customStyles = {
