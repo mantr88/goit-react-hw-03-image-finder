@@ -1,6 +1,7 @@
 import { Formik } from "formik";
-import { Header, Form, Field, FormButton } from "./Searchbar.styled";
+import PropTypes from 'prop-types';
 import {BiSearch} from 'react-icons/bi'
+import { Header, Form, Field, FormButton } from "./Searchbar.styled";
 
 export const Searchbar = ({ query }) => {
     return (
@@ -34,4 +35,8 @@ export const Searchbar = ({ query }) => {
             </Formik>
         </Header>
     );
+};
+
+Searchbar.propTypes = {
+    query: PropTypes.func.isRequired,
 };
