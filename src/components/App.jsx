@@ -10,11 +10,6 @@ import { ImageGalery } from "./ImageGallery/ImageGallery";
 import { Button } from "./Button/Button";
 import { Spiner } from "./Spiner/Spiner";
 
-// Необхідно:
-//✅ 1. Прописати проп - тайпи в модалці?;
-//✅ 2. Поправити стилі модалки;
-// 3. Зробити закриття модалки при кліку по оверлею.
-
 export class App extends Component {
   state = {
     photos: null,
@@ -22,7 +17,7 @@ export class App extends Component {
     page: 1,
     isLoading: false,
   };
-
+  
   async componentDidUpdate(_, prevState) {
   if (prevState.page !== this.state.page) {
     try {
@@ -45,7 +40,6 @@ export class App extends Component {
     try {
       this.setState({ isLoading: true });
       const response = await fetchGalery(query);
-      // console.log(response)
       this.setState({photos: response.data.hits, query: query});
     } catch (error) {
       console.log(error);
