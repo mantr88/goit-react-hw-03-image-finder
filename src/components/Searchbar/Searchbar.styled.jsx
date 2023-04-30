@@ -47,6 +47,7 @@ export const FormButton = styled.button`
 
   :hover{
     opacity: 1;
+    color: #324ce1;
   }
 `;
 
